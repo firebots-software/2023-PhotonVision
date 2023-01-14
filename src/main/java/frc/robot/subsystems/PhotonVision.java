@@ -7,12 +7,15 @@ import org.photonvision.targeting.PhotonPipelineResult;
 import org.photonvision.targeting.PhotonTrackedTarget;
 import org.photonvision.targeting.TargetCorner;
 
-import edu.wpi.first.math.geometry.Transform2d;
 import edu.wpi.first.math.geometry.Transform3d;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.commands.DistanceFromTag;
 
 public class PhotonVision extends SubsystemBase{
+    private NetworkTableInstance instance = NetworkTableInstance.getDefault();
+    private NetworkTable table = instance.getTable("limelightCam");
+    
     PhotonCamera camera = new PhotonCamera("limelightCam");
 
     //Have to use the same pipeline result each time you want to gather data.

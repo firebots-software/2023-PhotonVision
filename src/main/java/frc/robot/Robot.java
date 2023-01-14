@@ -5,16 +5,13 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.commands.DistanceFromTag;
-import frc.robot.subsystems.PhotonVision;
+import frc.robot.commands.PhotonInfo;
 
 public class Robot extends TimedRobot {
-  PhotonVision pv = new PhotonVision();
-  DistanceFromTag dTag = new DistanceFromTag();
+  PhotonInfo photonInfo = new PhotonInfo();
+
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
@@ -22,14 +19,13 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_robotContainer = new RobotContainer();
-    //distanceFromTag.execute();
 
   }
 
   @Override
   public void robotPeriodic() {
     CommandScheduler.getInstance().run();
-    System.out.println(dTag.dist());
+    System.out.println(photonInfo.getDistance());
   }
 
   @Override
