@@ -29,7 +29,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
     CommandScheduler.getInstance().run();
-    System.out.println(dTag.dist());
+    System.out.println(dTag.getDistFromTag());
   }
 
   @Override
