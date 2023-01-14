@@ -37,7 +37,7 @@ public class DistanceFromTag extends CommandBase{
         double dist = 0.0;
         if(pvn.hasTarget()){
             dist = PhotonUtils.calculateDistanceToTargetMeters(1, 1, 0.349066, 0);
-            
+
             
         }
         else{
@@ -45,7 +45,6 @@ public class DistanceFromTag extends CommandBase{
         }
         return dist;
     }
-
     
     
     // @Override
