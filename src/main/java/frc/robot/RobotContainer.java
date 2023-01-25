@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.SwerveJoystickCmd;
+import frc.robot.commands.SwervePID;
 import frc.robot.commands.ZeroHeadingCmd;
 import frc.robot.subsystems.SwerveSubsystem;
 
@@ -59,7 +60,12 @@ public class RobotContainer {
   private void configureButtonBindings() {
     final Trigger damageControl = new JoystickButton(ps4_controller1, Constants.OI.CIRCLE_BUTTON_PORT);
     damageControl.toggleOnTrue(new ZeroHeadingCmd(swerveSubsystem));
+
+    final Trigger tune = new JoystickButton(ps4_controller1, Constants.OI.TRIANGLE_BUTTON_PORT);
+    tune.toggleOnTrue(new SwervePID());
   }
+
+
 
   public Command getAutonomousCommand() {
     return Commands.print("No autonomous command configured");
