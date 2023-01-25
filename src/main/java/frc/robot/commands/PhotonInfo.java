@@ -6,15 +6,19 @@ import org.photonvision.PhotonUtils;
 import org.photonvision.targeting.PhotonPipelineResult;
 import org.photonvision.targeting.PhotonTrackedTarget;
 
+import edu.wpi.first.math.controller.RamseteController;
 import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.math.geometry.Transform3d;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.RamseteCommand;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import frc.robot.subsystems.PhotonVision;
 
 public class PhotonInfo extends CommandBase{
     PhotonVision pv;
+    // RamseteCommand rcommnad;
+
     static double CAMERA_HEIGHT_METERS = 0.6477;
     static double TARGET_HEIGHT_METERS = 1.17602;
     static double CAMERA_YAW = 24.5;
@@ -22,6 +26,7 @@ public class PhotonInfo extends CommandBase{
 
     public PhotonInfo(){
         pv = new PhotonVision();
+        // rcommnad = new RamseteCommand(null, null, null, null, null, null, null, null, null, null);
     }
     
 
@@ -35,7 +40,7 @@ public class PhotonInfo extends CommandBase{
             TARGET_HEIGHT_METERS, Units.degreesToRadians(CAMERA_YAW), Units.degreesToRadians(target.getPitch()));   
         }
         else{
-            dist = 0.69;
+            dist = 0.6;
         }
         return dist;
 
@@ -62,4 +67,5 @@ public class PhotonInfo extends CommandBase{
         System.out.print("Skew: ");
         System.out.println(target.getSkew());
     }
+
 }
