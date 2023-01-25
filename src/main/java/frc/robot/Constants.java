@@ -116,15 +116,5 @@ public final class Constants {
         public static final int kDriverRotAxis = 4;
         public static final int kDriverFieldOrientedButtonIdx = 1;
     }
-    public static class Ramsete {
-        public static SimpleMotorFeedforward feedforward = new SimpleMotorFeedforward(Constants.DriveConstants.ksVolts,
-                Constants.DriveConstants.kvVoltSecondsPerMeter,
-                Constants.DriveConstants.kaVoltSecondsSquaredPerMeter);
-
-        public static RamseteController ramseteController = new RamseteController(2.0,0.7);
-        
-        public final static double turnToleranceDeg = 1;
-        public static final double turnRateToleranceDegPerS = 45;
-        public static double smallTurnP = 0.01, smallTurnI = 0.0, smallTurnD = 0.0036569; //todo: verify if correct values
-    }
+    
 }
