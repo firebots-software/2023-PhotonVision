@@ -46,6 +46,37 @@ public class PhotonInfo extends CommandBase{
 
     }
 
+    public double getY(){
+        PhotonPipelineResult result = pv.getLatestPipeline();
+        double dist = 0;
+        double yaw = 0;
+        double pitch = 0;
+
+        if(result.hasTargets()){
+            yaw = pv.getYaw(result.getBestTarget());
+            pitch = pv.getPitch(result.getBestTarget());
+            dist = PhotonUtils.calculateDistanceToTargetMeters(CAMERA_HEIGHT_METERS, 
+            TARGET_HEIGHT_METERS, Units.degreesToRadians(CAMERA_YAW), Units.degreesToRadians(pitch));   
+        }
+
+        return (dist) / Math.cos(yaw) - 0.5;
+    }
+    public double getX(){
+        PhotonPipelineResult result = pv.getLatestPipeline();
+        double dist = 0;
+        double yaw = 0;
+        double pitch = 0;
+
+        if(result.hasTargets()){
+            yaw = pv.getYaw(result.getBestTarget());
+            pitch = pv.getPitch(result.getBestTarget());
+            dist = PhotonUtils.calculateDistanceToTargetMeters(CAMERA_HEIGHT_METERS, 
+            TARGET_HEIGHT_METERS, Units.degreesToRadians(CAMERA_YAW), Units.degreesToRadians(pitch));   
+        }
+
+        return (dist) / Math.sin(yaw);
+    }
+
 
     public void logInfo(){
         PhotonPipelineResult result = pv.getLatestPipeline();
